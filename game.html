@@ -18,6 +18,12 @@
     <p id="result_message"></p>
 
 
-<script src="build/game.js"></script>
+    <script  src="/node_modules/requirejs/require.js"></script>
+    <script>
+        requirejs.config({
+            urlArgs: (id, url) => ((id.indexOf('/build') === 0 && id.indexOf('.js') === -1) ? '.js' : '')
+        });
+    </script>
+    <script>require(['/build/game'])</script>
 </body>
 </html>
