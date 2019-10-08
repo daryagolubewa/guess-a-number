@@ -10,7 +10,18 @@ let elem = document.getElementById('result_message');
 
 document.getElementById('button')
     .addEventListener('click', () => {
-        let getUserNumber: number = parseFloat((<HTMLInputElement>document.getElementById('input_number')).value);
+
+        const inputNumberElem = document.getElementById('input_number');
+
+
+        // Если inputNumberElem не является экземлпяром класса HTMLInputElement, то показывать ошибку.
+        // Т.о., избавилась от приведения типов.
+        if (!(inputNumberElem instanceof HTMLInputElement)) {
+            throw new Error('An element with id input_number is not HTMLInputElement')
+        }
+
+
+        let getUserNumber: number = parseFloat(inputNumberElem.value);
         document.getElementById('refresh_button').removeAttribute("disabled");
 
         if (randomNumber === getUserNumber) {
@@ -21,14 +32,20 @@ document.getElementById('button')
             elem.textContent = 'Pick a smaller number'
         }
 
-
-    })
+    });
 
 document.getElementById('refresh_button')
     .addEventListener('click', () => {
         elem.textContent = '';
-        (<HTMLInputElement>document.getElementById('input_number')).value = '';
-    })
+
+        const inputNumberElem = document.getElementById('input_number');
+        if (!(inputNumberElem instanceof HTMLInputElement)) {
+            throw new Error('An element with id input_number is not HTMLInputElement')
+        }
+
+        inputNumberElem.value = '';
+    });
+
 
 
 
