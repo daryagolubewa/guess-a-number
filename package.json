@@ -1,0 +1,22 @@
+{
+  "name": "guess-a-number",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "game.html",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daryagolubewa/guess-a-number.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daryagolubewa/guess-a-number/issues"
+  },
+  "homepage": "https://github.com/daryagolubewa/guess-a-number#readme"
+}
