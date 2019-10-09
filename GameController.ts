@@ -1,5 +1,5 @@
-import GameUi from './GameUI';
-import Game from './Game';
+import GameView from './GameView';
+import GameState from './GameState';
 
 /**
  * Класс GameController содержит обработчики кликов двух кнопок GuessButton и RefreshButton.
@@ -8,28 +8,23 @@ import Game from './Game';
 
 export default class GameController {
 
-    gameUi = new GameUi();
-    game = new Game();
-    
-    constructor() {
-        this.gameUi.getGuessButton().addEventListener('click', this.onGuessButtonClick);
-        this.gameUi.getRefreshButton().addEventListener('click', this.onRefreshClick);
-    }
+   gameView = new GameView(this);
+   gameState = new GameState();
 
     /**
      * onGuessButtonClick: сверяет сгенерированное число и введенное пользователем; включает refreshButton
      */
 
-    private onGuessButtonClick = () => {
+     onGuessButtonClick = () => {
 
-        this.gameUi.enableRefreshButton();
+        this.gameView.enableRefreshButton();
 
-        if (this.game.randomNumber === this.gameUi.getInputNumberValue()) {
-            this.gameUi.printResultMessage('Hooray, you win!');
-        } else if (this.game.randomNumber > this.gameUi.getInputNumberValue()) {
-            this.gameUi.printResultMessage('Pick a greater number');
-        } else if (this.game.randomNumber < this.gameUi.getInputNumberValue()) {
-            this.gameUi.printResultMessage('Pick a smaller number');
+        if (this.gameState.guessedNumber === this.gameState.inputNumberVal) {
+            this.gameState.resultMessage = 'Hooray, you win!';
+        } else if (this.gameState.guessedNumber > this.gameState.inputNumberVal) {
+            this.gameState.resultMessage = 'Pick a greater number';
+        } else if (this.gameState.guessedNumber < this.gameState.inputNumberVal) {
+            this.gameState.resultMessage = 'Pick a smaller number';
         }
     };
 
@@ -37,9 +32,9 @@ export default class GameController {
      * onRefreshClick: запускает очистку инпута и сообщения с результатом
      */
 
-    private onRefreshClick = () => {
-        this.gameUi.clearInputNumberValue();
-        this.gameUi.clearResultMessage();
+   onRefreshClick = () => {
+        this.gameView.clearInputNumberValue();
+        this.gameView.clearResultMessage();
     };
 
 }

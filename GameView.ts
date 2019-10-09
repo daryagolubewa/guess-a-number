@@ -1,8 +1,20 @@
-/**
- * Класс GameUi описывает различные методы, которые занимаются получением данных, выводом их на экран, очисткой.
- */
-export default class GameUi {
+import GameState from "./GameState";
+import GameController from "./GameController";
 
+
+
+/**
+ * Класс GameView описывает различные методы, которые занимаются получением данных, выводом их на экран, очисткой.
+ */
+
+export default class GameView {
+
+    constructor(public controller: GameController) {
+        this.getGuessButton().addEventListener('click', this.controller.onGuessButtonClick);
+        this.getRefreshButton().addEventListener('click', this.controller.onRefreshClick);
+    }
+    
+    
     /**
      * printResultMessage: выводит сообщение о результате игры.
      */
