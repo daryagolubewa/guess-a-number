@@ -21,9 +21,9 @@
     <script  src="/node_modules/requirejs/require.js"></script>
     <script>
         requirejs.config({
-            urlArgs: (id, url) => ((id.indexOf('/build') === 0 && id.indexOf('.js') === -1) ? '.js' : '')
+            urlArgs: (id, url) => ((id.indexOf('/build') === 0 && id.indexOf('.js') === -1) ? '.js' : '') + '?' + Math.random()
         });
     </script>
-    <script>require(['/build/game'])</script>
+    <script>require(['/build/index'])</script>
 </body>
 </html>
