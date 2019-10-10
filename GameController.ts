@@ -8,8 +8,14 @@ import GameState from './GameState';
 
 export default class GameController {
 
-   gameView = new GameView(this);
+   gameView = new GameView();
    gameState = new GameState();
+
+   constructor() {
+       this.gameView.getGuessButton().addEventListener('click', this.onGuessButtonClick);
+       this.gameView.getRefreshButton().addEventListener('click', this.onRefreshClick);
+   }
+
 
     /**
      * onGuessButtonClick: сверяет сгенерированное число и введенное пользователем; включает refreshButton
@@ -17,7 +23,7 @@ export default class GameController {
 
      onGuessButtonClick = () => {
 
-        this.gameView.enableRefreshButton();
+        this.gameState.refreshButtonDisabled = false;
 
         if (this.gameState.guessedNumber === this.gameState.inputNumberVal) {
             this.gameState.resultMessage = 'Hooray, you win!';
@@ -33,8 +39,8 @@ export default class GameController {
      */
 
    onRefreshClick = () => {
-        this.gameView.clearInputNumberValue();
-        this.gameView.clearResultMessage();
+        this.gameState.clearInputNumberValue();
+        this.gameState.clearResultMessage();
     };
 
 }
