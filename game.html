@@ -21,7 +21,12 @@
     <script  src="/node_modules/requirejs/require.js"></script>
     <script>
         requirejs.config({
-            urlArgs: (id, url) => ((id.indexOf('/build') === 0 && id.indexOf('.js') === -1) ? '.js' : '') + '?' + Math.random()
+            urlArgs: (id, url) => ((id.indexOf('/build') === 0 && id.indexOf('.js') === -1) ? '.js' : '') + '?' + Math.random(),
+            map: {
+                '*': {
+                    mobx: '/node_modules/mobx/lib/mobx.umd.js'
+                }
+            }
         });
     </script>
     <script>require(['/build/index'])</script>
