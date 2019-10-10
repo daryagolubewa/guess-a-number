@@ -10,15 +10,21 @@ export default class GameController {
 	public gameView = new GameView(this.gameState);
 
 	constructor() {
+		this.gameView.getInputNumberElem().addEventListener('change', this.onInputNumberElemChange);
 		this.gameView.getGuessButton().addEventListener('click', this.onGuessButtonClick);
 		this.gameView.getRefreshButton().addEventListener('click', this.onRefreshClick);
 	}
+
+	private onInputNumberElemChange = (event: Event) => {
+		const inputNumberElem = event.target as HTMLInputElement;
+		this.gameState.inputNumberValStr = inputNumberElem.value;
+	};
 
 	/**
 	 * onGuessButtonClick: сверяет сгенерированное число и введенное пользователем; включает refreshButton
 	 */
 
-	public onGuessButtonClick = () => {
+	private onGuessButtonClick = () => {
 		this.gameState.refreshButtonDisabled = false;
 
 		if (this.gameState.guessedNumber === this.gameState.inputNumberVal) {
@@ -34,7 +40,7 @@ export default class GameController {
 	 * onRefreshClick: запускает очистку инпута и сообщения с результатом
 	 */
 
-	public onRefreshClick = () => {
+	private onRefreshClick = () => {
 		this.gameState.clearInputNumberValue();
 		this.gameState.clearResultMessage();
 	};

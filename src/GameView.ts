@@ -1,5 +1,4 @@
 import GameState from './GameState';
-import GameController from './GameController';
 import {reaction} from 'mobx';
 
 /**
@@ -43,6 +42,10 @@ export default class GameView {
 
 	public getRefreshButton() {
 		return document.getElementById('refresh_button');
+	}
+
+	public getInputNumberElem() {
+		return document.getElementById('input_number');
 	}
 
 	private onResultMessageChange = (resultMessage: string) => {
