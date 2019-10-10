@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-debugger": false,
+    "no-console": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "curly": [true, "ignore-same-line"],
+    "no-empty": [true, "allow-empty-functions"]
+  },
+  "linterOptions": {
+    "exclude": [
+      "build/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  }
+}
