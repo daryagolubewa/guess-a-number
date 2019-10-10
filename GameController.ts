@@ -8,8 +8,8 @@ import GameState from './GameState';
 
 export default class GameController {
 
-   gameView = new GameView();
    gameState = new GameState();
+   gameView = new GameView(this.gameState);
 
    constructor() {
        this.gameView.getGuessButton().addEventListener('click', this.onGuessButtonClick);
