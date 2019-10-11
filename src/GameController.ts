@@ -26,14 +26,7 @@ export default class GameController {
 
 	private onGuessButtonClick = () => {
 		this.gameState.refreshButtonDisabled = false;
-
-		if (this.gameState.guessedNumber === this.gameState.inputNumberVal) {
-			this.gameState.resultMessage = 'Hooray, you win!';
-		} else if (this.gameState.guessedNumber > this.gameState.inputNumberVal) {
-			this.gameState.resultMessage = 'Pick a greater number';
-		} else if (this.gameState.guessedNumber < this.gameState.inputNumberVal) {
-			this.gameState.resultMessage = 'Pick a smaller number';
-		}
+		this.gameState.checkInputNumber();
 	};
 
 	/**

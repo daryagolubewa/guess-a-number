@@ -33,4 +33,14 @@ export default class GameState {
 	public clearResultMessage() {
 		this.resultMessage = '';
 	}
+
+	public checkInputNumber() {
+		if (this.guessedNumber === this.inputNumberVal) {
+			this.resultMessage = 'Hooray, you win!';
+		} else if (this.guessedNumber > this.inputNumberVal) {
+			this.resultMessage = 'Pick a greater number';
+		} else if (this.guessedNumber < this.inputNumberVal) {
+			this.resultMessage = 'Pick a smaller number';
+		}
+	}
 }
